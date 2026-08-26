@@ -1,0 +1,643 @@
+{% extends "layout.html" %}
+
+{% block title %}Register Your School{% endblock %}
+
+{% block content %}
+
+<div class="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 px-4 py-24">
+
+```
+<div class="max-w-5xl mx-auto">
+
+    <!-- HEADER -->
+
+    <div class="text-center text-white mb-10">
+
+        <div class="inline-flex w-16 h-16 rounded-2xl
+                    bg-white/10 backdrop-blur
+                    items-center justify-center
+                    text-3xl mb-5">
+
+            🏫
+
+        </div>
+
+        <p class="text-indigo-300 font-semibold
+                  uppercase tracking-widest text-sm">
+
+            Step 2 of 2
+
+        </p>
+
+        <h1 class="text-4xl md:text-5xl
+                   font-black mt-2">
+
+            Register Your School
+
+        </h1>
+
+        <p class="text-slate-300 mt-3 max-w-xl mx-auto">
+
+            Add your school's information to complete
+            your account setup.
+
+        </p>
+
+    </div>
+
+
+    <!-- PROGRESS -->
+
+    <div class="flex justify-center items-center
+                mb-10 text-white">
+
+        <div class="flex items-center">
+
+            <div class="w-10 h-10 rounded-full
+                        bg-green-500
+                        flex items-center justify-center
+                        font-bold">
+
+                ✓
+
+            </div>
+
+            <span class="ml-3 font-semibold">
+
+                Account
+
+            </span>
+
+        </div>
+
+
+        <div class="w-16 md:w-28 h-1
+                    bg-indigo-500 mx-4">
+
+        </div>
+
+
+        <div class="flex items-center">
+
+            <div class="w-10 h-10 rounded-full
+                        bg-indigo-600
+                        flex items-center justify-center
+                        font-bold">
+
+                2
+
+            </div>
+
+            <span class="ml-3 font-semibold">
+
+                School
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- CARD -->
+
+    <div class="bg-white rounded-3xl
+                shadow-2xl overflow-hidden">
+
+
+        <form method="POST"
+              enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+
+            {% if form.non_field_errors %}
+
+            <div class="mx-6 md:mx-10 mt-8
+                        p-4 rounded-xl
+                        bg-red-50
+                        border border-red-200
+                        text-red-700">
+
+                {{ form.non_field_errors }}
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- ========================= -->
+            <!-- SCHOOL INFORMATION -->
+            <!-- ========================= -->
+
+            <div class="p-6 md:p-10
+                        border-b border-slate-100">
+
+                <div class="mb-7">
+
+                    <p class="text-indigo-600
+                              text-sm font-bold
+                              uppercase tracking-wider">
+
+                        01
+
+                    </p>
+
+                    <h2 class="text-2xl
+                               font-black text-slate-900
+                               mt-1">
+
+                        School Information
+
+                    </h2>
+
+                    <p class="text-slate-500 mt-1">
+
+                        Basic information about your institution.
+
+                    </p>
+
+                </div>
+
+
+                <div class="grid grid-cols-1
+                            md:grid-cols-2 gap-6">
+
+
+                    <!-- SCHOOL NAME -->
+
+                    <div class="md:col-span-2">
+
+                        <label class="block text-sm
+                                      font-semibold
+                                      text-slate-700 mb-2">
+
+                            School Name *
+
+                        </label>
+
+                        {{ form.school_name }}
+
+                        {% if form.school_name.errors %}
+
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ form.school_name.errors.0 }}
+                        </p>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- PRINCIPAL -->
+
+                    <div>
+
+                        <label class="block text-sm
+                                      font-semibold
+                                      text-slate-700 mb-2">
+
+                            Principal Name *
+
+                        </label>
+
+                        {{ form.principal_name }}
+
+                        {% if form.principal_name.errors %}
+
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ form.principal_name.errors.0 }}
+                        </p>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- ESTABLISHED YEAR -->
+
+                    <div>
+
+                        <label class="block text-sm
+                                      font-semibold
+                                      text-slate-700 mb-2">
+
+                            Established Year
+
+                        </label>
+
+                        {{ form.established_year }}
+
+                        {% if form.established_year.errors %}
+
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ form.established_year.errors.0 }}
+                        </p>
+
+                        {% endif %}
+
+                        <p class="text-xs text-slate-400 mt-1">
+
+                            Example: 2005
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- WEBSITE -->
+
+                    <div>
+
+                        <label class="block text-sm
+                                      font-semibold
+                                      text-slate-700 mb-2">
+
+                            School Website
+
+                        </label>
+
+                        {{ form.website }}
+
+                        {% if form.website.errors %}
+
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ form.website.errors.0 }}
+                        </p>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- LOGO -->
+
+                    <div>
+
+                        <label class="block text-sm
+                                      font-semibold
+                                      text-slate-700 mb-2">
+
+                            School Logo
+
+                        </label>
+
+                        {{ form.logo }}
+
+                        {% if form.logo.errors %}
+
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ form.logo.errors.0 }}
+                        </p>
+
+                        {% endif %}
+
+                        <p class="text-xs text-slate-400 mt-1">
+
+                            PNG, JPG or WEBP
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- CONTACT INFORMATION -->
+            <!-- ========================= -->
+
+            <div class="p-6 md:p-10
+                        border-b border-slate-100">
+
+                <div class="mb-7">
+
+                    <p class="text-indigo-600
+                              text-sm font-bold
+                              uppercase tracking-wider">
+
+                        02
+
+                    </p>
+
+                    <h2 class="text-2xl
+                               font-black text-slate-900
+                               mt-1">
+
+                        Contact Information
+
+                    </h2>
+
+                    <p class="text-slate-500 mt-1">
+
+                        Contact details for your school.
+
+                    </p>
+
+                </div>
+
+
+                <div class="grid grid-cols-1
+                            md:grid-cols-2 gap-6">
+
+
+                    <!-- EMAIL -->
+
+                    <div>
+
+                        <label class="block text-sm
+                                      font-semibold
+                                      text-slate-700 mb-2">
+
+                            School Email *
+
+                        </label>
+
+                        {{ form.email }}
+
+                        {% if form.email.errors %}
+
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ form.email.errors.0 }}
+                        </p>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div>
+
+                        <label class="block text-sm
+                                      font-semibold
+                                      text-slate-700 mb-2">
+
+                            School Phone *
+
+                        </label>
+
+                        {{ form.phone }}
+
+                        {% if form.phone.errors %}
+
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ form.phone.errors.0 }}
+                        </p>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- ADDRESS -->
+            <!-- ========================= -->
+
+            <div class="p-6 md:p-10
+                        border-b border-slate-100">
+
+                <div class="mb-7">
+
+                    <p class="text-indigo-600
+                              text-sm font-bold
+                              uppercase tracking-wider">
+
+                        03
+
+                    </p>
+
+                    <h2 class="text-2xl
+                               font-black text-slate-900
+                               mt-1">
+
+                        School Address
+
+                    </h2>
+
+                    <p class="text-slate-500 mt-1">
+
+                        Where is your school located?
+
+                    </p>
+
+                </div>
+
+
+                <div class="grid grid-cols-1
+                            md:grid-cols-2 gap-6">
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="md:col-span-2">
+
+                        <label class="block text-sm
+                                      font-semibold
+                                      text-slate-700 mb-2">
+
+                            Complete Address *
+
+                        </label>
+
+                        {{ form.address }}
+
+                        {% if form.address.errors %}
+
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ form.address.errors.0 }}
+                        </p>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- CITY -->
+
+                    <div>
+
+                        <label class="block text-sm
+                                      font-semibold
+                                      text-slate-700 mb-2">
+
+                            City *
+
+                        </label>
+
+                        {{ form.city }}
+
+                        {% if form.city.errors %}
+
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ form.city.errors.0 }}
+                        </p>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- STATE -->
+
+                    <div>
+
+                        <label class="block text-sm
+                                      font-semibold
+                                      text-slate-700 mb-2">
+
+                            State *
+
+                        </label>
+
+                        {{ form.state }}
+
+                        {% if form.state.errors %}
+
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ form.state.errors.0 }}
+                        </p>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- COUNTRY -->
+
+                    <div>
+
+                        <label class="block text-sm
+                                      font-semibold
+                                      text-slate-700 mb-2">
+
+                            Country *
+
+                        </label>
+
+                        {{ form.country }}
+
+                        {% if form.country.errors %}
+
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ form.country.errors.0 }}
+                        </p>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- POSTAL -->
+
+                    <div>
+
+                        <label class="block text-sm
+                                      font-semibold
+                                      text-slate-700 mb-2">
+
+                            Postal Code *
+
+                        </label>
+
+                        {{ form.postal_code }}
+
+                        {% if form.postal_code.errors %}
+
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ form.postal_code.errors.0 }}
+                        </p>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- SUBMIT -->
+            <!-- ========================= -->
+
+            <div class="p-6 md:p-10
+                        bg-slate-50">
+
+                <div class="flex flex-col
+                            md:flex-row
+                            items-center
+                            justify-between gap-5">
+
+                    <div>
+
+                        <p class="font-semibold
+                                  text-slate-800">
+
+                            Almost there! 🎉
+
+                        </p>
+
+                        <p class="text-sm
+                                  text-slate-500 mt-1">
+
+                            Your school will be reviewed
+                            by our platform administrator.
+
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="w-full md:w-auto
+                               px-8 py-4
+                               rounded-2xl
+                               bg-gradient-to-r
+                               from-indigo-600
+                               to-blue-600
+                               text-white
+                               font-bold
+                               shadow-lg
+                               shadow-indigo-500/20
+                               hover:from-indigo-700
+                               hover:to-blue-700
+                               hover:-translate-y-0.5
+                               transition duration-200">
+
+                        Register School →
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <p class="text-center text-white/40
+              text-sm mt-6">
+
+        Your information is securely stored.
+
+    </p>
+
+</div>
+```
+
+</div>
+
+{% endblock %}

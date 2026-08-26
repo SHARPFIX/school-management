@@ -1,0 +1,1079 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ school.school_name }} - School Details
+{% endblock %}
+
+{% block content %}
+
+<div class="min-h-screen bg-slate-100 pt-24 pb-12">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <div class="flex flex-col md:flex-row
+                    md:items-center
+                    md:justify-between
+                    gap-4 mb-8">
+
+            <div>
+
+                <a href="{% url 'schools:dashboard' %}"
+                   class="inline-flex items-center gap-2
+                          text-sm font-semibold
+                          text-slate-500
+                          hover:text-indigo-600
+                          transition">
+
+                    ← Back to Dashboard
+
+                </a>
+
+                <p class="text-sm font-bold
+                          uppercase tracking-widest
+                          text-indigo-600 mt-5">
+
+                    School Management
+
+                </p>
+
+                <h1 class="text-3xl md:text-4xl
+                           font-black text-slate-900 mt-1">
+
+                    School Details
+
+                </h1>
+
+                <p class="text-slate-500 mt-2">
+
+                    View and manage your school's information.
+
+                </p>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="flex flex-wrap gap-3">
+
+                <a href="#"
+                   class="px-5 py-3 rounded-xl
+                          bg-white
+                          border border-slate-200
+                          text-slate-700
+                          font-bold
+                          hover:bg-slate-50
+                          transition">
+
+                    Edit School
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- SCHOOL HERO -->
+        <!-- ================================================= -->
+
+        <div class="bg-gradient-to-r
+                    from-indigo-700
+                    to-sky-600
+                    rounded-3xl
+                    p-6 md:p-8
+                    text-white
+                    shadow-xl mb-6">
+
+            <div class="flex flex-col
+                        md:flex-row
+                        md:items-center
+                        gap-6">
+
+                <!-- SCHOOL ICON -->
+
+                <div class="w-24 h-24
+                            rounded-3xl
+                            bg-white/15
+                            flex items-center
+                            justify-center
+                            text-5xl
+                            border border-white/20">
+
+                    🏫
+
+                </div>
+
+
+                <!-- SCHOOL INFORMATION -->
+
+                <div class="flex-1">
+
+                    <p class="text-indigo-200
+                              text-sm
+                              uppercase
+                              tracking-widest
+                              font-bold">
+
+                        School
+
+                    </p>
+
+                    <h2 class="text-3xl md:text-4xl
+                               font-black mt-1">
+
+                        {{ school.school_name }}
+
+                    </h2>
+
+                    {% if school.school_code %}
+
+                        <p class="text-indigo-100 mt-2">
+
+                            School Code:
+
+                            <span class="font-bold">
+
+                                {{ school.school_code }}
+
+                            </span>
+
+                        </p>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div>
+
+                    {% if school.is_active %}
+
+                        <span class="inline-flex
+                                     px-4 py-2
+                                     rounded-full
+                                     bg-green-400/20
+                                     border border-green-300/30
+                                     text-green-100
+                                     font-bold">
+
+                            Active
+
+                        </span>
+
+                    {% else %}
+
+                        <span class="inline-flex
+                                     px-4 py-2
+                                     rounded-full
+                                     bg-red-400/20
+                                     border border-red-300/30
+                                     text-red-100
+                                     font-bold">
+
+                            Inactive
+
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- STATISTICS -->
+        <!-- ================================================= -->
+
+        <div class="grid grid-cols-2
+                    lg:grid-cols-4
+                    gap-4 mb-6">
+
+
+            <!-- STUDENTS -->
+
+            <div class="bg-white
+                        rounded-2xl
+                        border border-slate-200
+                        shadow-sm
+                        p-5">
+
+                <div class="flex items-center
+                            justify-between">
+
+                    <div>
+
+                        <p class="text-sm
+                                  text-slate-500
+                                  font-medium">
+
+                            Students
+
+                        </p>
+
+                        <p class="text-3xl
+                                  font-black
+                                  text-slate-900 mt-1">
+
+                            {{ total_students|default:"0" }}
+
+                        </p>
+
+                    </div>
+
+                    <div class="w-12 h-12
+                                rounded-xl
+                                bg-indigo-100
+                                flex items-center
+                                justify-center
+                                text-xl">
+
+                        👨‍🎓
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TEACHERS -->
+
+            <div class="bg-white
+                        rounded-2xl
+                        border border-slate-200
+                        shadow-sm
+                        p-5">
+
+                <div class="flex items-center
+                            justify-between">
+
+                    <div>
+
+                        <p class="text-sm
+                                  text-slate-500
+                                  font-medium">
+
+                            Teachers
+
+                        </p>
+
+                        <p class="text-3xl
+                                  font-black
+                                  text-slate-900 mt-1">
+
+                            {{ total_teachers|default:"0" }}
+
+                        </p>
+
+                    </div>
+
+                    <div class="w-12 h-12
+                                rounded-xl
+                                bg-sky-100
+                                flex items-center
+                                justify-center
+                                text-xl">
+
+                        👨‍🏫
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ADMINS -->
+
+            <div class="bg-white
+                        rounded-2xl
+                        border border-slate-200
+                        shadow-sm
+                        p-5">
+
+                <div class="flex items-center
+                            justify-between">
+
+                    <div>
+
+                        <p class="text-sm
+                                  text-slate-500
+                                  font-medium">
+
+                            Administrators
+
+                        </p>
+
+                        <p class="text-3xl
+                                  font-black
+                                  text-slate-900 mt-1">
+
+                            {{ total_admins|default:"0" }}
+
+                        </p>
+
+                    </div>
+
+                    <div class="w-12 h-12
+                                rounded-xl
+                                bg-orange-100
+                                flex items-center
+                                justify-center
+                                text-xl">
+
+                        👤
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CLASSES -->
+
+            <div class="bg-white
+                        rounded-2xl
+                        border border-slate-200
+                        shadow-sm
+                        p-5">
+
+                <div class="flex items-center
+                            justify-between">
+
+                    <div>
+
+                        <p class="text-sm
+                                  text-slate-500
+                                  font-medium">
+
+                            Classes
+
+                        </p>
+
+                        <p class="text-3xl
+                                  font-black
+                                  text-slate-900 mt-1">
+
+                            {{ total_classes|default:"0" }}
+
+                        </p>
+
+                    </div>
+
+                    <div class="w-12 h-12
+                                rounded-xl
+                                bg-emerald-100
+                                flex items-center
+                                justify-center
+                                text-xl">
+
+                        📚
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- INFORMATION GRID -->
+        <!-- ================================================= -->
+
+        <div class="grid grid-cols-1
+                    lg:grid-cols-2
+                    gap-6">
+
+
+            <!-- ============================================= -->
+            <!-- BASIC INFORMATION -->
+            <!-- ============================================= -->
+
+            <div class="bg-white
+                        rounded-2xl
+                        border border-slate-200
+                        shadow-sm
+                        p-6">
+
+                <div class="flex items-center
+                            gap-4 mb-6">
+
+                    <div class="w-12 h-12
+                                rounded-xl
+                                bg-indigo-100
+                                flex items-center
+                                justify-center
+                                text-xl">
+
+                        🏫
+
+                    </div>
+
+                    <div>
+
+                        <h2 class="text-xl
+                                   font-black
+                                   text-slate-900">
+
+                            Basic Information
+
+                        </h2>
+
+                        <p class="text-sm
+                                  text-slate-500">
+
+                            General school information.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="space-y-4">
+
+
+                    <!-- SCHOOL NAME -->
+
+                    <div class="flex justify-between
+                                gap-5
+                                border-b
+                                border-slate-100
+                                pb-3">
+
+                        <span class="text-slate-500">
+                            School Name
+                        </span>
+
+                        <span class="font-bold
+                                     text-slate-900
+                                     text-right">
+
+                            {{ school.school_name }}
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- SCHOOL CODE -->
+
+                    <div class="flex justify-between
+                                gap-5
+                                border-b
+                                border-slate-100
+                                pb-3">
+
+                        <span class="text-slate-500">
+                            School Code
+                        </span>
+
+                        <span class="font-bold
+                                     text-slate-900">
+
+                            {{ school.school_code|default:"—" }}
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- ESTABLISHED -->
+
+                    <div class="flex justify-between
+                                gap-5
+                                border-b
+                                border-slate-100
+                                pb-3">
+
+                        <span class="text-slate-500">
+                            Established
+                        </span>
+
+                        <span class="font-bold
+                                     text-slate-900">
+
+                            {{ school.established_date|default:"—" }}
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- SCHOOL TYPE -->
+
+                    <div class="flex justify-between
+                                gap-5">
+
+                        <span class="text-slate-500">
+                            School Type
+                        </span>
+
+                        <span class="font-bold
+                                     text-slate-900">
+
+                            {{ school.school_type|default:"—" }}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ============================================= -->
+            <!-- CONTACT INFORMATION -->
+            <!-- ============================================= -->
+
+            <div class="bg-white
+                        rounded-2xl
+                        border border-slate-200
+                        shadow-sm
+                        p-6">
+
+                <div class="flex items-center
+                            gap-4 mb-6">
+
+                    <div class="w-12 h-12
+                                rounded-xl
+                                bg-sky-100
+                                flex items-center
+                                justify-center
+                                text-xl">
+
+                        📞
+
+                    </div>
+
+                    <div>
+
+                        <h2 class="text-xl
+                                   font-black
+                                   text-slate-900">
+
+                            Contact Information
+
+                        </h2>
+
+                        <p class="text-sm
+                                  text-slate-500">
+
+                            School contact details.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="space-y-4">
+
+
+                    <!-- EMAIL -->
+
+                    <div class="flex justify-between
+                                gap-5
+                                border-b
+                                border-slate-100
+                                pb-3">
+
+                        <span class="text-slate-500">
+                            Email
+                        </span>
+
+                        <span class="font-bold
+                                     text-slate-900
+                                     text-right">
+
+                            {{ school.email|default:"—" }}
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="flex justify-between
+                                gap-5
+                                border-b
+                                border-slate-100
+                                pb-3">
+
+                        <span class="text-slate-500">
+                            Phone
+                        </span>
+
+                        <span class="font-bold
+                                     text-slate-900">
+
+                            {{ school.phone_number|default:"—" }}
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- WEBSITE -->
+
+                    <div class="flex justify-between
+                                gap-5">
+
+                        <span class="text-slate-500">
+                            Website
+                        </span>
+
+                        <span class="font-bold
+                                     text-slate-900">
+
+                            {{ school.website|default:"—" }}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ============================================= -->
+            <!-- ADDRESS -->
+            <!-- ============================================= -->
+
+            <div class="bg-white
+                        rounded-2xl
+                        border border-slate-200
+                        shadow-sm
+                        p-6">
+
+                <div class="flex items-center
+                            gap-4 mb-6">
+
+                    <div class="w-12 h-12
+                                rounded-xl
+                                bg-emerald-100
+                                flex items-center
+                                justify-center
+                                text-xl">
+
+                        📍
+
+                    </div>
+
+                    <div>
+
+                        <h2 class="text-xl
+                                   font-black
+                                   text-slate-900">
+
+                            Address
+
+                        </h2>
+
+                        <p class="text-sm
+                                  text-slate-500">
+
+                            School location.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="space-y-4">
+
+                    <div>
+
+                        <p class="text-sm
+                                  text-slate-500 mb-1">
+
+                            Address
+
+                        </p>
+
+                        <p class="font-bold
+                                  text-slate-900">
+
+                            {{ school.address|default:"—" }}
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="grid grid-cols-2
+                                gap-5">
+
+                        <div>
+
+                            <p class="text-sm
+                                      text-slate-500">
+
+                                City
+
+                            </p>
+
+                            <p class="font-bold
+                                      text-slate-900 mt-1">
+
+                                {{ school.city|default:"—" }}
+
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <p class="text-sm
+                                      text-slate-500">
+
+                                State
+
+                            </p>
+
+                            <p class="font-bold
+                                      text-slate-900 mt-1">
+
+                                {{ school.state|default:"—" }}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ============================================= -->
+            <!-- ADMINISTRATOR -->
+            <!-- ============================================= -->
+
+            <div class="bg-white
+                        rounded-2xl
+                        border border-slate-200
+                        shadow-sm
+                        p-6">
+
+                <div class="flex items-center
+                            gap-4 mb-6">
+
+                    <div class="w-12 h-12
+                                rounded-xl
+                                bg-orange-100
+                                flex items-center
+                                justify-center
+                                text-xl">
+
+                        👤
+
+                    </div>
+
+                    <div>
+
+                        <h2 class="text-xl
+                                   font-black
+                                   text-slate-900">
+
+                            School Administrator
+
+                        </h2>
+
+                        <p class="text-sm
+                                  text-slate-500">
+
+                            Account responsible for this school.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                {% if school.owner %}
+
+                    <div class="space-y-4">
+
+
+                        <div class="flex justify-between
+                                    gap-5
+                                    border-b
+                                    border-slate-100
+                                    pb-3">
+
+                            <span class="text-slate-500">
+                                Username
+                            </span>
+
+                            <span class="font-bold
+                                         text-slate-900">
+
+                                {{ school.owner.username }}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="flex justify-between
+                                    gap-5
+                                    border-b
+                                    border-slate-100
+                                    pb-3">
+
+                            <span class="text-slate-500">
+                                Name
+                            </span>
+
+                            <span class="font-bold
+                                         text-slate-900">
+
+                                {{ school.owner.get_full_name|default:"—" }}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="flex justify-between
+                                    gap-5">
+
+                            <span class="text-slate-500">
+                                Email
+                            </span>
+
+                            <span class="font-bold
+                                         text-slate-900">
+
+                                {{ school.owner.email|default:"—" }}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                {% else %}
+
+                    <div class="rounded-xl
+                                bg-amber-50
+                                border border-amber-200
+                                p-4">
+
+                        <p class="text-sm
+                                  font-semibold
+                                  text-amber-700">
+
+                            No administrator is currently
+                            assigned to this school.
+
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- QUICK ACTIONS -->
+        <!-- ================================================= -->
+
+        <div class="bg-white
+                    rounded-2xl
+                    border border-slate-200
+                    shadow-sm
+                    p-6 mt-6">
+
+            <h2 class="text-xl
+                       font-black
+                       text-slate-900">
+
+                Quick Actions
+
+            </h2>
+
+            <p class="text-sm
+                      text-slate-500
+                      mt-1 mb-6">
+
+                Manage your school.
+
+            </p>
+
+
+            <div class="grid grid-cols-1
+                        sm:grid-cols-2
+                        lg:grid-cols-4
+                        gap-4">
+
+
+                <a href="{% url 'students:list' %}"
+                   class="group p-5 rounded-2xl
+                          bg-indigo-50
+                          border border-indigo-100
+                          hover:bg-indigo-100
+                          transition">
+
+                    <div class="text-2xl mb-3">
+                        👨‍🎓
+                    </div>
+
+                    <h3 class="font-black
+                               text-slate-900">
+
+                        Students
+
+                    </h3>
+
+                    <p class="text-sm
+                              text-slate-500 mt-1">
+
+                        Manage students
+
+                    </p>
+
+                </a>
+
+
+                <a href="#"
+                   class="group p-5 rounded-2xl
+                          bg-sky-50
+                          border border-sky-100
+                          hover:bg-sky-100
+                          transition">
+
+                    <div class="text-2xl mb-3">
+                        👨‍🏫
+                    </div>
+
+                    <h3 class="font-black
+                               text-slate-900">
+
+                        Teachers
+
+                    </h3>
+
+                    <p class="text-sm
+                              text-slate-500 mt-1">
+
+                        Manage teachers
+
+                    </p>
+
+                </a>
+
+
+                <a href="#"
+                   class="group p-5 rounded-2xl
+                          bg-orange-50
+                          border border-orange-100
+                          hover:bg-orange-100
+                          transition">
+
+                    <div class="text-2xl mb-3">
+                        💰
+                    </div>
+
+                    <h3 class="font-black
+                               text-slate-900">
+
+                        Fees
+
+                    </h3>
+
+                    <p class="text-sm
+                              text-slate-500 mt-1">
+
+                        Manage school fees
+
+                    </p>
+
+                </a>
+
+
+                <a href="#"
+                   class="group p-5 rounded-2xl
+                          bg-emerald-50
+                          border border-emerald-100
+                          hover:bg-emerald-100
+                          transition">
+
+                    <div class="text-2xl mb-3">
+                        📊
+                    </div>
+
+                    <h3 class="font-black
+                               text-slate-900">
+
+                        Reports
+
+                    </h3>
+
+                    <p class="text-sm
+                              text-slate-500 mt-1">
+
+                        View school reports
+
+                    </p>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- FOOTER -->
+        <!-- ================================================= -->
+
+        <div class="flex justify-end mt-6">
+
+            <a href="{% url 'schools:dashboard' %}"
+               class="px-6 py-3 rounded-xl
+                      bg-slate-900
+                      text-white
+                      font-bold
+                      hover:bg-slate-800
+                      transition">
+
+                Back to Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

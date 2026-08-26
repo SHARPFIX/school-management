@@ -1,0 +1,38 @@
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,sans-serif;
+}
+
+section{
+    overflow:hidden;
+}
+
+nav a{
+    transition:.3s;
+}
+
+.shadow-xl{
+    transition:.35s;
+}
+
+.shadow-xl:hover{
+    box-shadow:0 25px 60px rgba(79,70,229,.25);
+}
+.form-input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    background: #ffffff;
+    color: #0f172a;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.form-input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}

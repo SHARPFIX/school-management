@@ -1,0 +1,372 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    No School | SKOOLIX
+{% endblock %}
+
+
+{% block content %}
+
+<div class="min-h-[calc(100vh-80px)]
+            bg-slate-50
+            flex items-center
+            justify-center
+            px-6
+            py-16">
+
+    <div class="w-full max-w-2xl">
+
+        <!-- Main Card -->
+
+        <div class="bg-white
+                    rounded-3xl
+                    border border-slate-200
+                    shadow-xl
+                    overflow-hidden">
+
+            <!-- Top Section -->
+
+            <div class="bg-gradient-to-br
+                        from-indigo-600
+                        to-blue-600
+                        px-8
+                        py-12
+                        text-center
+                        text-white">
+
+                <!-- Icon -->
+
+                <div class="mx-auto
+                            w-20 h-20
+                            rounded-3xl
+                            bg-white/15
+                            border border-white/20
+                            flex items-center
+                            justify-center
+                            backdrop-blur-sm">
+
+                    <svg class="w-10 h-10"
+                         fill="none"
+                         stroke="currentColor"
+                         viewBox="0 0 24 24">
+
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="1.8"
+                            d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-7h6v7M9 10h.01M12 10h.01M15 10h.01"/>
+
+                    </svg>
+
+                </div>
+
+
+                <h1 class="text-3xl
+                           md:text-4xl
+                           font-black
+                           mt-6">
+
+                    No School Found
+
+                </h1>
+
+
+                <p class="text-indigo-100
+                          mt-3
+                          max-w-lg
+                          mx-auto
+                          leading-7">
+
+                    You don't have a school associated
+                    with your account yet.
+
+                </p>
+
+            </div>
+
+
+            <!-- Content -->
+
+            <div class="px-8
+                        py-10
+                        text-center">
+
+                <h2 class="text-xl
+                           font-black
+                           text-slate-900">
+
+                    Set up your school
+
+                </h2>
+
+
+                <p class="text-slate-500
+                          leading-7
+                          max-w-lg
+                          mx-auto
+                          mt-3">
+
+                    Create your school profile to start
+                    managing students, teachers,
+                    attendance, academics and
+                    other school activities through
+                    SKOOLIX.
+
+                </p>
+
+
+                <!-- Add School Button -->
+
+                <div class="mt-8">
+
+                    <a href="{% url 'schools:register' %}"
+                       class="inline-flex
+                              items-center
+                              justify-center
+                              gap-2
+                              px-7
+                              py-3.5
+                              rounded-xl
+                              bg-indigo-600
+                              text-white
+                              font-bold
+                              shadow-lg
+                              shadow-indigo-600/20
+                              hover:bg-indigo-700
+                              hover:-translate-y-0.5
+                              transition-all
+                              duration-200">
+
+                        <!-- Plus Icon -->
+
+                        <svg class="w-5 h-5"
+                             fill="none"
+                             stroke="currentColor"
+                             viewBox="0 0 24 24">
+
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 4v16m8-8H4"/>
+
+                        </svg>
+
+
+                        Add School
+
+                    </a>
+
+                </div>
+
+
+                <!-- Divider -->
+
+                <div class="flex
+                            items-center
+                            gap-4
+                            my-8">
+
+                    <div class="h-px
+                                bg-slate-200
+                                flex-1">
+                    </div>
+
+                    <span class="text-xs
+                                 uppercase
+                                 tracking-wider
+                                 font-semibold
+                                 text-slate-400">
+
+                        Get started
+
+                    </span>
+
+                    <div class="h-px
+                                bg-slate-200
+                                flex-1">
+                    </div>
+
+                </div>
+
+
+                <!-- Features -->
+
+                <div class="grid
+                            grid-cols-1
+                            sm:grid-cols-3
+                            gap-4">
+
+
+                    <!-- Students -->
+
+                    <div class="rounded-2xl
+                                bg-slate-50
+                                border border-slate-100
+                                p-4">
+
+                        <div class="w-10 h-10
+                                    mx-auto
+                                    rounded-xl
+                                    bg-indigo-100
+                                    text-indigo-600
+                                    flex items-center
+                                    justify-center">
+
+                            <svg class="w-5 h-5"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 viewBox="0 0 24 24">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17 20h5v-2a4 4 0 00-4-4h-1M9 20H4v-2a4 4 0 014-4h1M12 12a4 4 0 100-8 4 4 0 000 8z"/>
+
+                            </svg>
+
+                        </div>
+
+
+                        <p class="font-bold
+                                  text-slate-800
+                                  text-sm
+                                  mt-3">
+
+                            Students
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- Teachers -->
+
+                    <div class="rounded-2xl
+                                bg-slate-50
+                                border border-slate-100
+                                p-4">
+
+                        <div class="w-10 h-10
+                                    mx-auto
+                                    rounded-xl
+                                    bg-blue-100
+                                    text-blue-600
+                                    flex items-center
+                                    justify-center">
+
+                            <svg class="w-5 h-5"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 viewBox="0 0 24 24">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 14l9-5-9-5-9 5 9 5z"/>
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M5 12v5c2 2 5 3 7 3s5-1 7-3v-5"/>
+
+                            </svg>
+
+                        </div>
+
+
+                        <p class="font-bold
+                                  text-slate-800
+                                  text-sm
+                                  mt-3">
+
+                            Teachers
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- Attendance -->
+
+                    <div class="rounded-2xl
+                                bg-slate-50
+                                border border-slate-100
+                                p-4">
+
+                        <div class="w-10 h-10
+                                    mx-auto
+                                    rounded-xl
+                                    bg-green-100
+                                    text-green-600
+                                    flex items-center
+                                    justify-center">
+
+                            <svg class="w-5 h-5"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 viewBox="0 0 24 24">
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 11l3 3L22 4"/>
+
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+
+                            </svg>
+
+                        </div>
+
+
+                        <p class="font-bold
+                                  text-slate-800
+                                  text-sm
+                                  mt-3">
+
+                            Attendance
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Help -->
+
+        <p class="text-center
+                  text-sm
+                  text-slate-400
+                  mt-6">
+
+            Need help setting up your school?
+
+            <a href="/contact/"
+               class="text-indigo-600
+                      font-semibold
+                      hover:text-indigo-800">
+
+                Contact SKOOLIX Support
+
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

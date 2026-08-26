@@ -1,0 +1,687 @@
+{% extends "layout.html" %}
+
+{% block title %}Add Teacher{% endblock %}
+
+{% block content %}
+
+<div class="min-h-screen bg-slate-100 py-10">
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- HEADER -->
+
+        <div class="mb-8">
+
+            <a href="{% url 'teachers:management' %}"
+               class="inline-flex items-center gap-2
+                      text-sm font-semibold
+                      text-slate-500
+                      hover:text-indigo-600">
+
+                ← Back to Teacher Management
+
+            </a>
+
+            <div class="mt-5">
+
+                <h1 class="text-3xl md:text-4xl
+                           font-black text-slate-900">
+
+                    Add New Teacher
+
+                </h1>
+
+                <p class="mt-2 text-slate-500">
+
+                    Add a teacher to
+                    <span class="font-semibold text-slate-700">
+                        {{ school.school_name }}
+                    </span>
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form method="POST"
+              enctype="multipart/form-data"
+              class="space-y-6">
+
+            {% csrf_token %}
+
+
+            {% if form.non_field_errors %}
+
+            <div class="rounded-xl
+                        border border-red-200
+                        bg-red-50
+                        p-4
+                        text-sm
+                        text-red-700">
+
+                {{ form.non_field_errors }}
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- PERSONAL INFORMATION -->
+
+            <div class="bg-white rounded-2xl
+                        border border-slate-200
+                        shadow-sm">
+
+                <div class="px-6 py-5
+                            border-b border-slate-200">
+
+                    <div class="flex items-center gap-4">
+
+                        <div class="w-11 h-11
+                                    rounded-xl
+                                    bg-indigo-100
+                                    flex items-center
+                                    justify-center
+                                    text-xl">
+
+                            👤
+
+                        </div>
+
+                        <div>
+
+                            <h2 class="text-xl
+                                       font-black
+                                       text-slate-900">
+
+                                Personal Information
+
+                            </h2>
+
+                            <p class="text-sm
+                                      text-slate-500">
+
+                                Basic information about the teacher.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="p-6">
+
+                    <div class="grid grid-cols-1
+                                md:grid-cols-2
+                                gap-6">
+
+
+                        <!-- FIRST NAME -->
+
+                        <div>
+
+                            <label
+                                for="{{ form.first_name.id_for_label }}"
+                                class="block mb-2
+                                       text-sm font-bold
+                                       text-slate-700">
+
+                                First Name
+                                <span class="text-red-500">*</span>
+
+                            </label>
+
+                            {{ form.first_name }}
+
+                            {% for error in form.first_name.errors %}
+
+                                <p class="mt-1 text-sm text-red-600">
+                                    {{ error }}
+                                </p>
+
+                            {% endfor %}
+
+                        </div>
+
+
+                        <!-- LAST NAME -->
+
+                        <div>
+
+                            <label
+                                for="{{ form.last_name.id_for_label }}"
+                                class="block mb-2
+                                       text-sm font-bold
+                                       text-slate-700">
+
+                                Last Name
+
+                            </label>
+
+                            {{ form.last_name }}
+
+                            {% for error in form.last_name.errors %}
+
+                                <p class="mt-1 text-sm text-red-600">
+                                    {{ error }}
+                                </p>
+
+                            {% endfor %}
+
+                        </div>
+
+
+                        <!-- DATE OF BIRTH -->
+
+                        <div>
+
+                            <label
+                                for="{{ form.date_of_birth.id_for_label }}"
+                                class="block mb-2
+                                       text-sm font-bold
+                                       text-slate-700">
+
+                                Date of Birth
+
+                            </label>
+
+                            {{ form.date_of_birth }}
+
+                        </div>
+
+
+                        <!-- GENDER -->
+
+                        <div>
+
+                            <label
+                                for="{{ form.gender.id_for_label }}"
+                                class="block mb-2
+                                       text-sm font-bold
+                                       text-slate-700">
+
+                                Gender
+
+                            </label>
+
+                            {{ form.gender }}
+
+                        </div>
+
+
+                        <!-- PHOTO -->
+
+                        <div class="md:col-span-2">
+
+                            <label
+                                for="{{ form.photo.id_for_label }}"
+                                class="block mb-2
+                                       text-sm font-bold
+                                       text-slate-700">
+
+                                Teacher Photo
+
+                            </label>
+
+                            {{ form.photo }}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROFESSIONAL INFORMATION -->
+
+            <div class="bg-white rounded-2xl
+                        border border-slate-200
+                        shadow-sm">
+
+                <div class="px-6 py-5
+                            border-b border-slate-200">
+
+                    <div class="flex items-center gap-4">
+
+                        <div class="w-11 h-11
+                                    rounded-xl
+                                    bg-blue-100
+                                    flex items-center
+                                    justify-center
+                                    text-xl">
+
+                            🎓
+
+                        </div>
+
+                        <div>
+
+                            <h2 class="text-xl
+                                       font-black
+                                       text-slate-900">
+
+                                Professional Information
+
+                            </h2>
+
+                            <p class="text-sm
+                                      text-slate-500">
+
+                                Employment and qualification details.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="p-6">
+
+                    <div class="grid grid-cols-1
+                                md:grid-cols-2
+                                gap-6">
+
+
+                        <!-- EMPLOYEE ID -->
+
+                        <div>
+
+                            <label
+                                for="{{ form.employee_id.id_for_label }}"
+                                class="block mb-2
+                                       text-sm font-bold
+                                       text-slate-700">
+
+                                Employee ID
+                                <span class="text-red-500">*</span>
+
+                            </label>
+
+                            {{ form.employee_id }}
+
+                        </div>
+
+
+                        <!-- QUALIFICATION -->
+
+                        <div>
+
+                            <label
+                                for="{{ form.qaulification.id_for_label }}"
+                                class="block mb-2
+                                       text-sm font-bold
+                                       text-slate-700">
+
+                                Qualification
+
+                            </label>
+
+                            {{ form.qaulification }}
+
+                        </div>
+
+
+                        <!-- SPECIALIZATION -->
+
+                        <div>
+
+                            <label
+                                for="{{ form.specialization.id_for_label }}"
+                                class="block mb-2
+                                       text-sm font-bold
+                                       text-slate-700">
+
+                                Specialization
+
+                            </label>
+
+                            {{ form.specialization }}
+
+                        </div>
+
+
+                        <!-- EXPERIENCE -->
+
+                        <div>
+
+                            <label
+                                for="{{ form.experience.id_for_label }}"
+                                class="block mb-2
+                                       text-sm font-bold
+                                       text-slate-700">
+
+                                Experience
+
+                            </label>
+
+                            {{ form.experience }}
+
+                        </div>
+
+
+                        <!-- EMPLOYMENT -->
+
+                        <div>
+
+                            <label
+                                for="{{ form.employement_type.id_for_label }}"
+                                class="block mb-2
+                                       text-sm font-bold
+                                       text-slate-700">
+
+                                Employment Type
+
+                            </label>
+
+                            {{ form.employement_type }}
+
+                        </div>
+
+
+                        <!-- JOINING DATE -->
+
+                        <div>
+
+                            <label
+                                for="{{ form.joining_date.id_for_label }}"
+                                class="block mb-2
+                                       text-sm font-bold
+                                       text-slate-700">
+
+                                Joining Date
+
+                            </label>
+
+                            {{ form.joining_date }}
+
+                        </div>
+
+
+                        <!-- SALARY -->
+
+                        <div>
+
+                            <label
+                                for="{{ form.salary.id_for_label }}"
+                                class="block mb-2
+                                       text-sm font-bold
+                                       text-slate-700">
+
+                                Monthly Salary
+
+                            </label>
+
+                            <div class="relative">
+
+                                <span class="absolute
+                                             left-4 top-1/2
+                                             -translate-y-1/2
+                                             text-slate-500
+                                             font-semibold">
+
+                                    ₹
+
+                                </span>
+
+                                <div class="[&_input]:pl-10">
+
+                                    {{ form.salary }}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div class="bg-white rounded-2xl
+                        border border-slate-200
+                        shadow-sm">
+
+                <div class="px-6 py-5
+                            border-b border-slate-200">
+
+                    <div class="flex items-center gap-4">
+
+                        <div class="w-11 h-11
+                                    rounded-xl
+                                    bg-green-100
+                                    flex items-center
+                                    justify-center
+                                    text-xl">
+
+                            📞
+
+                        </div>
+
+                        <div>
+
+                            <h2 class="text-xl
+                                       font-black
+                                       text-slate-900">
+
+                                Contact Information
+
+                            </h2>
+
+                            <p class="text-sm
+                                      text-slate-500">
+
+                                Teacher contact details.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="p-6">
+
+                    <div class="grid grid-cols-1
+                                md:grid-cols-2
+                                gap-6">
+
+
+                        <!-- EMAIL -->
+
+                        <div>
+
+                            <label
+                                for="{{ form.email.id_for_label }}"
+                                class="block mb-2
+                                       text-sm font-bold
+                                       text-slate-700">
+
+                                Email Address
+
+                            </label>
+
+                            {{ form.email }}
+
+                        </div>
+
+
+                        <!-- PHONE -->
+
+                        <div>
+
+                            <label
+                                for="{{ form.phone_number.id_for_label }}"
+                                class="block mb-2
+                                       text-sm font-bold
+                                       text-slate-700">
+
+                                Phone Number
+
+                            </label>
+
+                            {{ form.phone_number }}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="bg-white rounded-2xl
+                        border border-slate-200
+                        shadow-sm">
+
+                <div class="p-6">
+
+                    <h2 class="text-xl
+                               font-black
+                               text-slate-900">
+
+                        Status & Responsibilities
+
+                    </h2>
+
+                    <p class="text-sm
+                              text-slate-500 mt-1 mb-6">
+
+                        Configure the teacher's current status.
+
+                    </p>
+
+
+                    <div class="flex flex-col
+                                sm:flex-row
+                                gap-6">
+
+
+                        <label class="flex items-center gap-3
+                                      cursor-pointer
+                                      p-4 rounded-xl
+                                      border border-slate-200
+                                      hover:bg-slate-50">
+
+                            {{ form.is_class_teacher }}
+
+                            <div>
+
+                                <p class="font-bold text-slate-800">
+
+                                    Class Teacher
+
+                                </p>
+
+                                <p class="text-xs text-slate-500">
+
+                                    Assign this teacher as a class teacher.
+
+                                </p>
+
+                            </div>
+
+                        </label>
+
+
+                        <label class="flex items-center gap-3
+                                      cursor-pointer
+                                      p-4 rounded-xl
+                                      border border-slate-200
+                                      hover:bg-slate-50">
+
+                            {{ form.is_active }}
+
+                            <div>
+
+                                <p class="font-bold text-slate-800">
+
+                                    Active Teacher
+
+                                </p>
+
+                                <p class="text-xs text-slate-500">
+
+                                    Teacher can currently work at the school.
+
+                                </p>
+
+                            </div>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="flex flex-col-reverse
+                        sm:flex-row
+                        sm:justify-end
+                        gap-3">
+
+                <a
+                    href="{% url 'teachers:management' %}"
+                    class="px-6 py-3
+                           rounded-xl
+                           border border-slate-300
+                           bg-white
+                           text-slate-700
+                           font-bold
+                           text-center
+                           hover:bg-slate-50
+                           transition">
+
+                    Cancel
+
+                </a>
+
+                <button
+                    type="submit"
+                    class="px-7 py-3
+                           rounded-xl
+                           bg-indigo-600
+                           text-white
+                           font-bold
+                           shadow-sm
+                           hover:bg-indigo-700
+                           transition">
+
+                    Create Teacher
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

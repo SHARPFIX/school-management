@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+
+<section
+class="relative h-screen bg-cover bg-center"
+
+style="background-image:url('{% static 'images/school-bg.jpg' %}')">
+
+<div class="absolute inset-0 bg-gradient-to-r from-indigo-900/80 to-sky-900/50"></div>
+
+<div class="relative z-10 max-w-7xl mx-auto px-8 h-full flex items-center">
+
+<div class="text-white max-w-2xl">
+
+<p class="uppercase tracking-widest text-sky-300 mb-4">
+Future of Education
+</p>
+
+<h1 class="text-6xl font-extrabold leading-tight">
+
+School Management
+
+<span class="text-sky-300">
+Made Easy
+</span>
+
+</h1>
+
+<p class="mt-8 text-xl text-gray-200 leading-8">
+
+Manage students, teachers, attendance, fees,
+results, examinations and administration through one
+beautiful dashboard.
+
+</p>
+
+<div class="mt-10 flex gap-5">
+
+<a href="/signup/"
+
+class="bg-white text-indigo-700 px-8 py-4 rounded-full font-semibold shadow-xl hover:scale-105 duration-300">
+
+Get Started
+
+</a>
+
+<a href="/about/"
+
+class="border border-white px-8 py-4 rounded-full hover:bg-white hover:text-indigo-700 duration-300">
+
+Learn More
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- White Section -->
+
+<section class="bg-white py-24">
+
+<div class="max-w-7xl mx-auto px-8">
+
+<h2 class="text-4xl font-bold text-center text-gray-800">
+
+Everything Your School Needs
+
+</h2>
+
+<p class="text-xl text-center mt-5 text-gray-500 max-w-2xl mx-auto">
+    One platform to automate your complete institution.
+</p>
+
+<div class="grid md:grid-cols-3 gap-10 mt-16">
+
+<div class="bg-white rounded-3xl shadow-xl p-8 hover:-translate-y-2 transition">
+
+<div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center text-3xl">
+
+🎓
+
+</div>
+
+<h3 class="mt-6 text-2xl font-bold text-black">
+
+Student Management
+
+</h3>
+
+<p class="mt-4 text-gray-500">
+
+Admissions, profiles, attendance,
+academic records and performance tracking.
+
+</p>
+
+</div>
+
+<div class="bg-white rounded-3xl shadow-xl p-8 hover:-translate-y-2 transition">
+
+<div class="w-16 h-16 rounded-full bg-sky-100 flex items-center justify-center text-3xl">
+
+👩‍🏫
+
+</div>
+
+<h3 class="mt-6 text-2xl font-bold text-black">
+
+Teacher Portal
+
+</h3>
+
+<p class="mt-4 text-gray-500">
+
+Manage classes, assignments,
+attendance and communication.
+
+</p>
+
+</div>
+
+<div class="bg-white rounded-3xl shadow-xl p-8 hover:-translate-y-2 transition">
+
+<div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center text-3xl">
+
+📊
+
+</div>
+
+<h3 class="mt-6 text-2xl font-bold text-black">
+
+Analytics
+
+</h3>
+
+<p class="mt-4 text-gray-500">
+
+View reports, fee collection,
+student progress and much more.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

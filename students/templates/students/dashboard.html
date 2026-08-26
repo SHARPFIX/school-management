@@ -1,0 +1,761 @@
+{% extends "layout.html" %}
+
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="min-h-screen bg-slate-100 pt-24 pb-12">
+
+```
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+
+    <!-- ========================= -->
+    <!-- HEADER -->
+    <!-- ========================= -->
+
+    <div class="flex flex-col md:flex-row
+                md:items-center
+                md:justify-between
+                gap-5 mb-8">
+
+        <div>
+
+            <p class="text-sm font-bold
+                      uppercase tracking-widest
+                      text-indigo-600">
+
+                Student Portal
+
+            </p>
+
+            <h1 class="text-3xl md:text-4xl
+                       font-black text-slate-900 mt-2">
+
+                Welcome,
+                {{ student.first_name }} 👋
+
+            </h1>
+
+            <p class="text-slate-500 mt-2">
+
+                Here's your academic overview.
+
+            </p>
+
+        </div>
+
+
+        <!-- Profile -->
+
+        <div class="flex items-center gap-4">
+
+            <div class="text-right hidden sm:block">
+
+                <p class="font-bold text-slate-800">
+
+                    {{ student.first_name }}
+                    {{ student.last_name }}
+
+                </p>
+
+                <p class="text-sm text-slate-500">
+
+                    Admission No:
+                    {{ student.admission_number }}
+
+                </p>
+
+            </div>
+
+
+            {% if student.photo %}
+
+                <img
+                    src="{{ student.photo.url }}"
+                    alt="Student"
+                    class="w-14 h-14 rounded-2xl
+                           object-cover
+                           border-2 border-white
+                           shadow"
+                >
+
+            {% else %}
+
+                <div class="w-14 h-14 rounded-2xl
+                            bg-gradient-to-br
+                            from-indigo-600
+                            to-blue-600
+                            text-white
+                            flex items-center
+                            justify-center
+                            text-xl font-black
+                            shadow">
+
+                    {{ student.first_name|first|upper }}
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- SCHOOL BANNER -->
+    <!-- ========================= -->
+
+    <div class="relative overflow-hidden
+                rounded-3xl
+                bg-gradient-to-r
+                from-indigo-700
+                via-indigo-600
+                to-blue-600
+                p-7 md:p-9
+                text-white
+                shadow-xl mb-8">
+
+        <div class="relative z-10">
+
+            <p class="text-indigo-200
+                      text-sm font-semibold
+                      uppercase tracking-widest">
+
+                My School
+
+            </p>
+
+            <h2 class="text-2xl md:text-3xl
+                       font-black mt-2">
+
+                {{ student.school.school_name }}
+
+            </h2>
+
+            <p class="text-indigo-100 mt-2">
+
+                Admission Number:
+                <span class="font-bold">
+
+                    {{ student.admission_number }}
+
+                </span>
+
+            </p>
+
+        </div>
+
+
+        <div class="absolute -right-10 -top-10
+                    w-40 h-40 rounded-full
+                    bg-white/10">
+
+        </div>
+
+        <div class="absolute right-20 -bottom-16
+                    w-48 h-48 rounded-full
+                    bg-white/5">
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- STATISTICS -->
+    <!-- ========================= -->
+
+    <div class="grid grid-cols-1
+                sm:grid-cols-2
+                lg:grid-cols-4
+                gap-5 mb-8">
+
+
+        <!-- Attendance -->
+
+        <div class="bg-white rounded-2xl
+                    p-6 border border-slate-200
+                    shadow-sm
+                    hover:-translate-y-1
+                    transition">
+
+            <div class="flex justify-between
+                        items-start">
+
+                <div>
+
+                    <p class="text-slate-500
+                              font-medium">
+
+                        Attendance
+
+                    </p>
+
+                    <h3 class="text-4xl
+                               font-black
+                               text-green-600 mt-3">
+
+                        {{ attendance_percentage }}%
+
+                    </h3>
+
+                </div>
+
+                <div class="w-12 h-12
+                            rounded-xl
+                            bg-green-100
+                            flex items-center
+                            justify-center
+                            text-2xl">
+
+                    📊
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Subjects -->
+
+        <div class="bg-white rounded-2xl
+                    p-6 border border-slate-200
+                    shadow-sm
+                    hover:-translate-y-1
+                    transition">
+
+            <div class="flex justify-between
+                        items-start">
+
+                <div>
+
+                    <p class="text-slate-500
+                              font-medium">
+
+                        Subjects
+
+                    </p>
+
+                    <h3 class="text-4xl
+                               font-black
+                               text-slate-900 mt-3">
+
+                        {{ total_subjects }}
+
+                    </h3>
+
+                </div>
+
+                <div class="w-12 h-12
+                            rounded-xl
+                            bg-indigo-100
+                            flex items-center
+                            justify-center
+                            text-2xl">
+
+                    📚
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Assignments -->
+
+        <div class="bg-white rounded-2xl
+                    p-6 border border-slate-200
+                    shadow-sm
+                    hover:-translate-y-1
+                    transition">
+
+            <div class="flex justify-between
+                        items-start">
+
+                <div>
+
+                    <p class="text-slate-500
+                              font-medium">
+
+                        Assignments
+
+                    </p>
+
+                    <h3 class="text-4xl
+                               font-black
+                               text-slate-900 mt-3">
+
+                        {{ pending_assignments }}
+
+                    </h3>
+
+                </div>
+
+                <div class="w-12 h-12
+                            rounded-xl
+                            bg-purple-100
+                            flex items-center
+                            justify-center
+                            text-2xl">
+
+                    📝
+
+                </div>
+
+            </div>
+
+            <p class="text-sm text-slate-400 mt-3">
+                Pending
+            </p>
+
+        </div>
+
+
+        <!-- Exams -->
+
+        <div class="bg-white rounded-2xl
+                    p-6 border border-slate-200
+                    shadow-sm
+                    hover:-translate-y-1
+                    transition">
+
+            <div class="flex justify-between
+                        items-start">
+
+                <div>
+
+                    <p class="text-slate-500
+                              font-medium">
+
+                        Upcoming Exams
+
+                    </p>
+
+                    <h3 class="text-4xl
+                               font-black
+                               text-slate-900 mt-3">
+
+                        {{ upcoming_exams }}
+
+                    </h3>
+
+                </div>
+
+                <div class="w-12 h-12
+                            rounded-xl
+                            bg-orange-100
+                            flex items-center
+                            justify-center
+                            text-2xl">
+
+                    📝
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ========================= -->
+
+    <div class="grid grid-cols-1
+                lg:grid-cols-3
+                gap-6">
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="lg:col-span-2
+                    bg-white rounded-2xl
+                    border border-slate-200
+                    shadow-sm p-7">
+
+            <h2 class="text-2xl
+                       font-black
+                       text-slate-900">
+
+                Quick Access
+
+            </h2>
+
+            <p class="text-slate-500 mt-1">
+
+                Access your academic resources.
+
+            </p>
+
+
+            <div class="grid grid-cols-2
+                        md:grid-cols-4
+                        gap-4 mt-6">
+
+
+                <a href="#"
+                   class="group p-5 rounded-2xl
+                          bg-indigo-50
+                          hover:bg-indigo-600
+                          transition">
+
+                    <div class="text-3xl">
+                        📚
+                    </div>
+
+                    <h3 class="font-bold
+                               text-slate-800
+                               group-hover:text-white
+                               mt-3">
+
+                        Subjects
+
+                    </h3>
+
+                    <p class="text-sm
+                              text-slate-500
+                              group-hover:text-indigo-100
+                              mt-1">
+
+                        My subjects
+
+                    </p>
+
+                </a>
+
+
+                <a href="#"
+                   class="group p-5 rounded-2xl
+                          bg-blue-50
+                          hover:bg-blue-600
+                          transition">
+
+                    <div class="text-3xl">
+                        📅
+                    </div>
+
+                    <h3 class="font-bold
+                               text-slate-800
+                               group-hover:text-white
+                               mt-3">
+
+                        Timetable
+
+                    </h3>
+
+                    <p class="text-sm
+                              text-slate-500
+                              group-hover:text-blue-100
+                              mt-1">
+
+                        View schedule
+
+                    </p>
+
+                </a>
+
+
+                <a href="#"
+                   class="group p-5 rounded-2xl
+                          bg-purple-50
+                          hover:bg-purple-600
+                          transition">
+
+                    <div class="text-3xl">
+                        📝
+                    </div>
+
+                    <h3 class="font-bold
+                               text-slate-800
+                               group-hover:text-white
+                               mt-3">
+
+                        Assignments
+
+                    </h3>
+
+                    <p class="text-sm
+                              text-slate-500
+                              group-hover:text-purple-100
+                              mt-1">
+
+                        View assignments
+
+                    </p>
+
+                </a>
+
+
+                <a href="#"
+                   class="group p-5 rounded-2xl
+                          bg-orange-50
+                          hover:bg-orange-500
+                          transition">
+
+                    <div class="text-3xl">
+                        🏆
+                    </div>
+
+                    <h3 class="font-bold
+                               text-slate-800
+                               group-hover:text-white
+                               mt-3">
+
+                        Results
+
+                    </h3>
+
+                    <p class="text-sm
+                              text-slate-500
+                              group-hover:text-orange-100
+                              mt-1">
+
+                        View results
+
+                    </p>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROFILE -->
+
+        <div class="bg-white rounded-2xl
+                    border border-slate-200
+                    shadow-sm p-7">
+
+            <h2 class="text-xl
+                       font-black
+                       text-slate-900">
+
+                My Information
+
+            </h2>
+
+
+            <div class="mt-6 space-y-5">
+
+
+                <div>
+
+                    <p class="text-xs uppercase
+                              tracking-wider
+                              text-slate-400
+                              font-bold">
+
+                        Admission Number
+
+                    </p>
+
+                    <p class="font-semibold
+                              text-slate-800 mt-1">
+
+                        {{ student.admission_number }}
+
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <p class="text-xs uppercase
+                              tracking-wider
+                              text-slate-400
+                              font-bold">
+
+                        Roll Number
+
+                    </p>
+
+                    <p class="font-semibold
+                              text-slate-800 mt-1">
+
+                        {{ student.roll_number|default:"Not assigned" }}
+
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <p class="text-xs uppercase
+                              tracking-wider
+                              text-slate-400
+                              font-bold">
+
+                        Email
+
+                    </p>
+
+                    <p class="font-semibold
+                              text-slate-800 mt-1
+                              break-all">
+
+                        {{ student.email|default:"Not provided" }}
+
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <p class="text-xs uppercase
+                              tracking-wider
+                              text-slate-400
+                              font-bold">
+
+                        School
+
+                    </p>
+
+                    <p class="font-semibold
+                              text-slate-800 mt-1">
+
+                        {{ student.school.school_name }}
+
+                    </p>
+
+                </div>
+
+
+                <a href="#"
+                   class="block text-center
+                          py-3 mt-6
+                          rounded-xl
+                          bg-slate-100
+                          text-slate-700
+                          font-semibold
+                          hover:bg-slate-200
+                          transition">
+
+                    View Profile
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- UPCOMING -->
+    <!-- ========================= -->
+
+    <div class="grid grid-cols-1
+                lg:grid-cols-2
+                gap-6 mt-6">
+
+
+        <!-- TIMETABLE -->
+
+        <div class="bg-white rounded-2xl
+                    border border-slate-200
+                    shadow-sm p-7">
+
+            <div class="flex justify-between
+                        items-center">
+
+                <div>
+
+                    <h2 class="text-xl
+                               font-black
+                               text-slate-900">
+
+                        Today's Timetable
+
+                    </h2>
+
+                    <p class="text-slate-500 mt-1">
+
+                        Your classes for today.
+
+                    </p>
+
+                </div>
+
+                <span class="text-2xl">
+                    📅
+                </span>
+
+            </div>
+
+
+            <div class="py-10 text-center
+                        text-slate-400">
+
+                <p>
+                    No timetable available yet.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- NOTICES -->
+
+        <div class="bg-white rounded-2xl
+                    border border-slate-200
+                    shadow-sm p-7">
+
+            <div class="flex justify-between
+                        items-center">
+
+                <div>
+
+                    <h2 class="text-xl
+                               font-black
+                               text-slate-900">
+
+                        School Notices
+
+                    </h2>
+
+                    <p class="text-slate-500 mt-1">
+
+                        Latest announcements.
+
+                    </p>
+
+                </div>
+
+                <span class="text-2xl">
+                    📢
+                </span>
+
+            </div>
+
+
+            <div class="py-10 text-center
+                        text-slate-400">
+
+                <p>
+                    No new notices.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+{% endblock %}

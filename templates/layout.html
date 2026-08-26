@@ -1,0 +1,543 @@
+{% load static %}
+{% load tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}SKOOLIX{% endblock %}
+    </title>
+
+    {% tailwind_css %}
+
+    <link rel="stylesheet"
+          href="{% static 'style.css' %}">
+
+</head>
+
+
+<body class="bg-gray-100">
+
+
+<!-- ===================================================== -->
+<!-- NAVBAR -->
+<!-- ===================================================== -->
+
+<nav class="fixed top-0 left-0 w-full z-50
+            backdrop-blur-lg
+            bg-white/90
+            shadow-lg">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="flex justify-between items-center h-20">
+
+
+            <!-- LOGO -->
+
+            <a href="/"
+               class="text-3xl
+                      font-extrabold
+                      text-indigo-700">
+
+                SKOOLIX
+
+            </a>
+
+
+            <!-- ================================================= -->
+            <!-- NAVIGATION -->
+            <!-- ================================================= -->
+
+            <div class="hidden md:flex
+                        items-center
+                        gap-8">
+
+                <a href="/"
+                   class="text-gray-700
+                          hover:text-indigo-600
+                          font-medium
+                          transition">
+
+                    Home
+
+                </a>
+
+
+                <a href="/about/"
+                   class="text-gray-700
+                          hover:text-indigo-600
+                          font-medium
+                          transition">
+
+                    About
+
+                </a>
+
+
+                <a href="/contact/"
+                   class="text-gray-700
+                          hover:text-indigo-600
+                          font-medium
+                          transition">
+
+                    Contact
+
+                </a>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- AUTH -->
+            <!-- ================================================= -->
+
+            <div class="hidden md:flex
+                        items-center
+                        gap-4">
+
+
+                {% if user.is_authenticated %}
+
+
+                    <!-- USER NAME -->
+
+                    <div class="flex items-center gap-3">
+
+                        <div class="w-10 h-10
+                                    rounded-full
+                                    bg-indigo-600
+                                    text-white
+                                    flex items-center
+                                    justify-center
+                                    font-bold">
+
+                            {% if user.first_name %}
+
+                                {{ user.first_name|first|upper }}
+
+                            {% else %}
+
+                                {{ user.username|first|upper }}
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <div>
+
+                            <p class="font-semibold
+                                      text-gray-800">
+
+                                {% if user.first_name %}
+
+                                    {{ user.first_name }}
+                                    {{ user.last_name }}
+
+                                {% else %}
+
+                                    {{ user.username }}
+
+                                {% endif %}
+
+                            </p>
+
+
+                            <p class="text-xs
+                                      text-gray-500
+                                      capitalize">
+
+                                {{ user.role }}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DASHBOARD -->
+
+                    {% if user.role == "student" %}
+
+                        <a href="{% url 'students:dashboard' %}"
+                           class="px-5 py-2
+                                  rounded-full
+                                  bg-indigo-600
+                                  text-white
+                                  hover:bg-indigo-700
+                                  duration-300
+                                  shadow-lg">
+
+                            Dashboard
+
+                        </a>
+
+
+                    {% elif user.role == "teacher" %}
+
+                        <a href="{% url 'teachers:dashboard' %}"
+                           class="px-5 py-2
+                                  rounded-full
+                                  bg-indigo-600
+                                  text-white
+                                  hover:bg-indigo-700
+                                  duration-300
+                                  shadow-lg">
+
+                            Dashboard
+
+                        </a>
+
+
+                    {% elif user.role == "school_admin" %}
+
+                        <a href="{% url 'schools:dashboard' %}"
+                           class="px-5 py-2
+                                  rounded-full
+                                  bg-indigo-600
+                                  text-white
+                                  hover:bg-indigo-700
+                                  duration-300
+                                  shadow-lg">
+
+                            Dashboard
+
+                        </a>
+
+                    {% endif %}
+
+
+                    <!-- LOGOUT -->
+
+                    <form method="POST"
+                          action="{% url 'accounts:logout' %}">
+
+                        {% csrf_token %}
+
+                        <button type="submit"
+                                class="px-5 py-2
+                                       rounded-full
+                                       border
+                                       border-red-500
+                                       text-red-600
+                                       hover:bg-red-500
+                                       hover:text-white
+                                       duration-300">
+
+                            Logout
+
+                        </button>
+
+                    </form>
+
+
+                {% else %}
+
+
+                    <!-- LOGIN -->
+
+                    <a href="{% url 'accounts:login' %}"
+                       class="px-5 py-2
+                              rounded-full
+                              border
+                              border-indigo-600
+                              text-indigo-700
+                              hover:bg-indigo-600
+                              hover:text-white
+                              duration-300">
+
+                        Login
+
+                    </a>
+
+
+                    <!-- SIGN UP -->
+
+                    <a href="{% url 'accounts:signup' %}"
+                       class="px-5 py-2
+                              rounded-full
+                              bg-indigo-600
+                              text-white
+                              hover:bg-indigo-700
+                              duration-300
+                              shadow-lg">
+
+                        Sign Up
+
+                    </a>
+
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ===================================================== -->
+<!-- CONTENT -->
+<!-- ===================================================== -->
+
+{% block content %}
+
+{% endblock %}
+
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+
+<footer class="bg-slate-900
+               text-gray-300
+               mt-20">
+
+    <div class="max-w-7xl
+                mx-auto
+                px-6
+                py-14">
+
+        <div class="grid
+                    grid-cols-1
+                    md:grid-cols-4
+                    gap-10">
+
+
+            <!-- BRAND -->
+
+            <div>
+
+                <h2 class="text-3xl
+                           font-bold
+                           text-white">
+
+                    SKOOLIX
+
+                </h2>
+
+
+                <p class="mt-4
+                          text-gray-400
+                          leading-7">
+
+                    A modern School Management System
+                    that simplifies administration,
+                    attendance, academics, and communication
+                    for schools.
+
+                </p>
+
+            </div>
+
+
+            <!-- QUICK LINKS -->
+
+            <div>
+
+                <h3 class="text-xl
+                           font-semibold
+                           text-white
+                           mb-5">
+
+                    Quick Links
+
+                </h3>
+
+
+                <ul class="space-y-3">
+
+                    <li>
+                        <a href="/"
+                           class="hover:text-indigo-400 transition">
+
+                            Home
+
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="/about/"
+                           class="hover:text-indigo-400 transition">
+
+                            About
+
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="/contact/"
+                           class="hover:text-indigo-400 transition">
+
+                            Contact
+
+                        </a>
+                    </li>
+
+
+                    {% if not user.is_authenticated %}
+
+                    <li>
+                        <a href="{% url 'accounts:login' %}"
+                           class="hover:text-indigo-400 transition">
+
+                            Login
+
+                        </a>
+                    </li>
+
+                    {% endif %}
+
+                </ul>
+
+            </div>
+
+
+            <!-- FEATURES -->
+
+            <div>
+
+                <h3 class="text-xl
+                           font-semibold
+                           text-white
+                           mb-5">
+
+                    Features
+
+                </h3>
+
+
+                <ul class="space-y-3">
+
+                    <li>Student Management</li>
+
+                    <li>Teacher Portal</li>
+
+                    <li>Attendance</li>
+
+                    <li>Fee Management</li>
+
+                    <li>Exam Results</li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div>
+
+                <h3 class="text-xl
+                           font-semibold
+                           text-white
+                           mb-5">
+
+                    Contact
+
+                </h3>
+
+
+                <ul class="space-y-3">
+
+                    <li>
+                        📍 Srinagar, Jammu & Kashmir
+                    </li>
+
+                    <li>
+                        📞 +91 9103228158
+                    </li>
+
+                    <li>
+                        ✉ info@skoolix.com
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- BOTTOM -->
+
+        <div class="border-t
+                    border-gray-700
+                    mt-10
+                    pt-6
+                    flex
+                    flex-col
+                    md:flex-row
+                    justify-between
+                    items-center">
+
+            <p class="text-sm
+                      text-gray-400">
+
+                © 2026 SKOOLIX.
+                All Rights Reserved.
+
+            </p>
+
+
+            <div class="flex
+                        space-x-6
+                        mt-4
+                        md:mt-0">
+
+                <a href="#"
+                   class="hover:text-indigo-400 transition">
+
+                    Facebook
+
+                </a>
+
+
+                <a href="#"
+                   class="hover:text-indigo-400 transition">
+
+                    Instagram
+
+                </a>
+
+
+                <a href="#"
+                   class="hover:text-indigo-400 transition">
+
+                    LinkedIn
+
+                </a>
+
+
+                <a href="#"
+                   class="hover:text-indigo-400 transition">
+
+                    Twitter
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>

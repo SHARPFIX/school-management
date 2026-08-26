@@ -1,0 +1,1083 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    About Us | SKOOLIX
+{% endblock %}
+
+
+{% block content %}
+
+<!-- ===================================================== -->
+<!-- HERO -->
+<!-- ===================================================== -->
+
+<section class="relative overflow-hidden
+                bg-gradient-to-br
+                from-indigo-700
+                via-indigo-600
+                to-blue-600
+                text-white">
+
+    <!-- Decorative circles -->
+
+    <div class="absolute
+                -top-24
+                -right-24
+                w-80 h-80
+                rounded-full
+                bg-white/10">
+    </div>
+
+    <div class="absolute
+                -bottom-32
+                -left-20
+                w-96 h-96
+                rounded-full
+                bg-white/5">
+    </div>
+
+
+    <div class="relative
+                max-w-7xl
+                mx-auto
+                px-6
+                py-24
+                md:py-32">
+
+        <div class="max-w-3xl">
+
+            <p class="text-indigo-200
+                      font-bold
+                      uppercase
+                      tracking-widest
+                      text-sm">
+
+                About SKOOLIX
+
+            </p>
+
+
+            <h1 class="text-4xl
+                       md:text-6xl
+                       font-black
+                       leading-tight
+                       mt-4">
+
+                Smarter schools.
+                <span class="text-indigo-200">
+                    Better education.
+                </span>
+
+            </h1>
+
+
+            <p class="text-lg
+                      md:text-xl
+                      text-indigo-100
+                      leading-8
+                      mt-6
+                      max-w-2xl">
+
+                SKOOLIX is a modern school management
+                platform designed to bring students,
+                teachers, parents and school administrators
+                together in one simple digital ecosystem.
+
+            </p>
+
+
+            <div class="flex flex-wrap
+                        gap-4
+                        mt-8">
+
+                <a href="{% url 'accounts:signup' %}"
+                   class="px-6 py-3
+                          rounded-xl
+                          bg-white
+                          text-indigo-700
+                          font-bold
+                          hover:bg-indigo-50
+                          transition
+                          shadow-lg">
+
+                    Get Started
+
+                </a>
+
+
+                <a href="{% url 'accounts:login' %}"
+                   class="px-6 py-3
+                          rounded-xl
+                          border border-white/40
+                          text-white
+                          font-bold
+                          hover:bg-white/10
+                          transition">
+
+                    Login
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- INTRODUCTION -->
+<!-- ===================================================== -->
+
+<section class="bg-white">
+
+    <div class="max-w-7xl
+                mx-auto
+                px-6
+                py-20">
+
+        <div class="grid
+                    grid-cols-1
+                    lg:grid-cols-2
+                    gap-14
+                    items-center">
+
+
+            <!-- TEXT -->
+
+            <div>
+
+                <p class="text-indigo-600
+                          font-bold
+                          uppercase
+                          tracking-widest
+                          text-sm">
+
+                    Our Mission
+
+                </p>
+
+
+                <h2 class="text-3xl
+                           md:text-4xl
+                           font-black
+                           text-slate-900
+                           mt-3">
+
+                    Technology that makes
+                    school management easier.
+
+                </h2>
+
+
+                <p class="text-slate-600
+                          leading-8
+                          mt-6">
+
+                    Managing a school involves much more
+                    than teaching. Attendance, students,
+                    teachers, examinations, fees,
+                    assignments and communication all need
+                    to work together.
+
+                </p>
+
+
+                <p class="text-slate-600
+                          leading-8
+                          mt-4">
+
+                    SKOOLIX brings these essential
+                    activities into one organized platform,
+                    helping schools reduce paperwork,
+                    save time and make better decisions.
+
+                </p>
+
+
+                <div class="grid
+                            grid-cols-2
+                            gap-5
+                            mt-8">
+
+
+                    <div class="p-5
+                                rounded-2xl
+                                bg-indigo-50
+                                border border-indigo-100">
+
+                        <p class="text-3xl
+                                  font-black
+                                  text-indigo-600">
+
+                            01
+
+                        </p>
+
+                        <p class="font-bold
+                                  text-slate-800
+                                  mt-2">
+
+                            Simple
+
+                        </p>
+
+                        <p class="text-sm
+                                  text-slate-500
+                                  mt-1">
+
+                            Easy-to-use tools for schools.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="p-5
+                                rounded-2xl
+                                bg-blue-50
+                                border border-blue-100">
+
+                        <p class="text-3xl
+                                  font-black
+                                  text-blue-600">
+
+                            02
+
+                        </p>
+
+                        <p class="font-bold
+                                  text-slate-800
+                                  mt-2">
+
+                            Connected
+
+                        </p>
+
+                        <p class="text-sm
+                                  text-slate-500
+                                  mt-1">
+
+                            Everyone works from one platform.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- VISUAL -->
+
+            <div class="relative">
+
+                <div class="rounded-3xl
+                            bg-slate-900
+                            p-8
+                            shadow-2xl">
+
+                    <div class="flex
+                                items-center
+                                justify-between
+                                mb-8">
+
+                        <div>
+
+                            <p class="text-slate-400
+                                      text-sm">
+
+                                SKOOLIX
+
+                            </p>
+
+                            <h3 class="text-white
+                                       text-2xl
+                                       font-black
+                                       mt-1">
+
+                                School Dashboard
+
+                            </h3>
+
+                        </div>
+
+
+                        <div class="w-12 h-12
+                                    rounded-xl
+                                    bg-indigo-600
+                                    flex items-center
+                                    justify-center">
+
+                            <span class="text-white
+                                         text-xl
+                                         font-black">
+
+                                S
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="grid
+                                grid-cols-2
+                                gap-4">
+
+
+                        <div class="rounded-2xl
+                                    bg-white/10
+                                    p-5">
+
+                            <p class="text-slate-400
+                                      text-sm">
+
+                                Students
+
+                            </p>
+
+                            <p class="text-3xl
+                                      text-white
+                                      font-black
+                                      mt-2">
+
+                                1,250
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="rounded-2xl
+                                    bg-white/10
+                                    p-5">
+
+                            <p class="text-slate-400
+                                      text-sm">
+
+                                Teachers
+
+                            </p>
+
+                            <p class="text-3xl
+                                      text-white
+                                      font-black
+                                      mt-2">
+
+                                85
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="rounded-2xl
+                                    bg-white/10
+                                    p-5">
+
+                            <p class="text-slate-400
+                                      text-sm">
+
+                                Attendance
+
+                            </p>
+
+                            <p class="text-3xl
+                                      text-green-400
+                                      font-black
+                                      mt-2">
+
+                                94%
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="rounded-2xl
+                                    bg-white/10
+                                    p-5">
+
+                            <p class="text-slate-400
+                                      text-sm">
+
+                                Classes
+
+                            </p>
+
+                            <p class="text-3xl
+                                      text-white
+                                      font-black
+                                      mt-2">
+
+                                32
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mt-5
+                                h-3
+                                rounded-full
+                                bg-white/10
+                                overflow-hidden">
+
+                        <div class="h-full
+                                    w-[94%]
+                                    rounded-full
+                                    bg-indigo-500">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- WHAT SKOOLIX OFFERS -->
+<!-- ===================================================== -->
+
+<section class="bg-slate-50">
+
+    <div class="max-w-7xl
+                mx-auto
+                px-6
+                py-20">
+
+        <div class="text-center
+                    max-w-2xl
+                    mx-auto">
+
+            <p class="text-indigo-600
+                      font-bold
+                      uppercase
+                      tracking-widest
+                      text-sm">
+
+                What We Offer
+
+            </p>
+
+
+            <h2 class="text-3xl
+                       md:text-4xl
+                       font-black
+                       text-slate-900
+                       mt-3">
+
+                Everything your school needs
+
+            </h2>
+
+
+            <p class="text-slate-500
+                      mt-4
+                      leading-7">
+
+                A unified platform for managing
+                everyday school operations.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid
+                    grid-cols-1
+                    sm:grid-cols-2
+                    lg:grid-cols-3
+                    gap-6
+                    mt-12">
+
+
+            <!-- STUDENTS -->
+
+            <div class="bg-white
+                        rounded-2xl
+                        p-7
+                        border border-slate-200
+                        shadow-sm
+                        hover:-translate-y-1
+                        hover:shadow-lg
+                        transition">
+
+                <div class="w-12 h-12
+                            rounded-xl
+                            bg-indigo-100
+                            flex items-center
+                            justify-center
+                            text-2xl">
+
+                    🎓
+
+                </div>
+
+
+                <h3 class="text-xl
+                           font-black
+                           text-slate-900
+                           mt-5">
+
+                    Student Management
+
+                </h3>
+
+
+                <p class="text-slate-500
+                          leading-7
+                          mt-3">
+
+                    Manage student profiles,
+                    admissions, information and
+                    academic records from one place.
+
+                </p>
+
+            </div>
+
+
+            <!-- TEACHERS -->
+
+            <div class="bg-white
+                        rounded-2xl
+                        p-7
+                        border border-slate-200
+                        shadow-sm
+                        hover:-translate-y-1
+                        hover:shadow-lg
+                        transition">
+
+                <div class="w-12 h-12
+                            rounded-xl
+                            bg-blue-100
+                            flex items-center
+                            justify-center
+                            text-2xl">
+
+                    👨‍🏫
+
+                </div>
+
+
+                <h3 class="text-xl
+                           font-black
+                           text-slate-900
+                           mt-5">
+
+                    Teacher Management
+
+                </h3>
+
+
+                <p class="text-slate-500
+                          leading-7
+                          mt-3">
+
+                    Manage teacher profiles,
+                    attendance, assignments,
+                    performance and other
+                    professional information.
+
+                </p>
+
+            </div>
+
+
+            <!-- ATTENDANCE -->
+
+            <div class="bg-white
+                        rounded-2xl
+                        p-7
+                        border border-slate-200
+                        shadow-sm
+                        hover:-translate-y-1
+                        hover:shadow-lg
+                        transition">
+
+                <div class="w-12 h-12
+                            rounded-xl
+                            bg-green-100
+                            flex items-center
+                            justify-center
+                            text-2xl">
+
+                    📊
+
+                </div>
+
+
+                <h3 class="text-xl
+                           font-black
+                           text-slate-900
+                           mt-5">
+
+                    Attendance
+
+                </h3>
+
+
+                <p class="text-slate-500
+                          leading-7
+                          mt-3">
+
+                    Keep track of student and teacher
+                    attendance with organized
+                    attendance records.
+
+                </p>
+
+            </div>
+
+
+            <!-- ASSIGNMENTS -->
+
+            <div class="bg-white
+                        rounded-2xl
+                        p-7
+                        border border-slate-200
+                        shadow-sm
+                        hover:-translate-y-1
+                        hover:shadow-lg
+                        transition">
+
+                <div class="w-12 h-12
+                            rounded-xl
+                            bg-purple-100
+                            flex items-center
+                            justify-center
+                            text-2xl">
+
+                    📝
+
+                </div>
+
+
+                <h3 class="text-xl
+                           font-black
+                           text-slate-900
+                           mt-5">
+
+                    Assignments
+
+                </h3>
+
+
+                <p class="text-slate-500
+                          leading-7
+                          mt-3">
+
+                    Teachers can manage assignments
+                    while students can keep track
+                    of their academic work.
+
+                </p>
+
+            </div>
+
+
+            <!-- EXAMS -->
+
+            <div class="bg-white
+                        rounded-2xl
+                        p-7
+                        border border-slate-200
+                        shadow-sm
+                        hover:-translate-y-1
+                        hover:shadow-lg
+                        transition">
+
+                <div class="w-12 h-12
+                            rounded-xl
+                            bg-orange-100
+                            flex items-center
+                            justify-center
+                            text-2xl">
+
+                    📚
+
+                </div>
+
+
+                <h3 class="text-xl
+                           font-black
+                           text-slate-900
+                           mt-5">
+
+                    Exams & Results
+
+                </h3>
+
+
+                <p class="text-slate-500
+                          leading-7
+                          mt-3">
+
+                    Organize examinations and
+                    maintain student academic
+                    performance and results.
+
+                </p>
+
+            </div>
+
+
+            <!-- FEES -->
+
+            <div class="bg-white
+                        rounded-2xl
+                        p-7
+                        border border-slate-200
+                        shadow-sm
+                        hover:-translate-y-1
+                        hover:shadow-lg
+                        transition">
+
+                <div class="w-12 h-12
+                            rounded-xl
+                            bg-pink-100
+                            flex items-center
+                            justify-center
+                            text-2xl">
+
+                    💳
+
+                </div>
+
+
+                <h3 class="text-xl
+                           font-black
+                           text-slate-900
+                           mt-5">
+
+                    Fee Management
+
+                </h3>
+
+
+                <p class="text-slate-500
+                          leading-7
+                          mt-3">
+
+                    Keep school fee records organized
+                    and make financial administration
+                    easier.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- HOW IT WORKS -->
+<!-- ===================================================== -->
+
+<section class="bg-white">
+
+    <div class="max-w-7xl
+                mx-auto
+                px-6
+                py-20">
+
+        <div class="grid
+                    grid-cols-1
+                    lg:grid-cols-2
+                    gap-14
+                    items-center">
+
+
+            <div>
+
+                <p class="text-indigo-600
+                          font-bold
+                          uppercase
+                          tracking-widest
+                          text-sm">
+
+                    One Platform
+
+                </p>
+
+
+                <h2 class="text-3xl
+                           md:text-4xl
+                           font-black
+                           text-slate-900
+                           mt-3">
+
+                    One connected ecosystem
+                    for your school.
+
+                </h2>
+
+
+                <p class="text-slate-600
+                          leading-8
+                          mt-5">
+
+                    SKOOLIX is designed around the
+                    different people who make a school
+                    work every day.
+
+                </p>
+
+            </div>
+
+
+            <div class="space-y-4">
+
+
+                <div class="flex items-center
+                            gap-5
+                            p-5
+                            rounded-2xl
+                            bg-slate-50
+                            border border-slate-200">
+
+                    <div class="w-12 h-12
+                                shrink-0
+                                rounded-xl
+                                bg-indigo-600
+                                text-white
+                                flex items-center
+                                justify-center
+                                font-black">
+
+                        01
+
+                    </div>
+
+
+                    <div>
+
+                        <h3 class="font-black
+                                   text-slate-900">
+
+                            School Administrators
+
+                        </h3>
+
+
+                        <p class="text-sm
+                                  text-slate-500
+                                  mt-1">
+
+                            Manage the complete school
+                            from one dashboard.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flex items-center
+                            gap-5
+                            p-5
+                            rounded-2xl
+                            bg-slate-50
+                            border border-slate-200">
+
+                    <div class="w-12 h-12
+                                shrink-0
+                                rounded-xl
+                                bg-blue-600
+                                text-white
+                                flex items-center
+                                justify-center
+                                font-black">
+
+                        02
+
+                    </div>
+
+
+                    <div>
+
+                        <h3 class="font-black
+                                   text-slate-900">
+
+                            Teachers
+
+                        </h3>
+
+
+                        <p class="text-sm
+                                  text-slate-500
+                                  mt-1">
+
+                            Manage classes, students,
+                            attendance and assignments.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flex items-center
+                            gap-5
+                            p-5
+                            rounded-2xl
+                            bg-slate-50
+                            border border-slate-200">
+
+                    <div class="w-12 h-12
+                                shrink-0
+                                rounded-xl
+                                bg-purple-600
+                                text-white
+                                flex items-center
+                                justify-center
+                                font-black">
+
+                        03
+
+                    </div>
+
+
+                    <div>
+
+                        <h3 class="font-black
+                                   text-slate-900">
+
+                            Students
+
+                        </h3>
+
+
+                        <p class="text-sm
+                                  text-slate-500
+                                  mt-1">
+
+                            Access academic information,
+                            assignments and attendance.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================== -->
+<!-- CTA -->
+<!-- ===================================================== -->
+
+<section class="bg-slate-950">
+
+    <div class="max-w-5xl
+                mx-auto
+                px-6
+                py-20
+                text-center">
+
+        <p class="text-indigo-400
+                  font-bold
+                  uppercase
+                  tracking-widest
+                  text-sm">
+
+            Get Started
+
+        </p>
+
+
+        <h2 class="text-3xl
+                   md:text-5xl
+                   font-black
+                   text-white
+                   mt-4">
+
+            Ready to modernize
+            your school?
+
+        </h2>
+
+
+        <p class="text-slate-400
+                  leading-7
+                  mt-5
+                  max-w-2xl
+                  mx-auto">
+
+            Bring students, teachers and
+            administration together with SKOOLIX.
+
+        </p>
+
+
+        <div class="flex
+                    flex-wrap
+                    justify-center
+                    gap-4
+                    mt-8">
+
+
+            <a href="{% url 'accounts:signup' %}"
+               class="px-7 py-3.5
+                      rounded-xl
+                      bg-indigo-600
+                      text-white
+                      font-bold
+                      hover:bg-indigo-700
+                      shadow-lg
+                      shadow-indigo-600/20
+                      transition">
+
+                Create Account
+
+            </a>
+
+
+            <a href="{% url 'accounts:login' %}"
+               class="px-7 py-3.5
+                      rounded-xl
+                      border border-slate-700
+                      text-white
+                      font-bold
+                      hover:bg-slate-800
+                      transition">
+
+                Login
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

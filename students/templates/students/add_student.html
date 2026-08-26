@@ -1,0 +1,711 @@
+{% extends "layout.html" %}
+
+{% block title %}Add Student{% endblock %}
+
+{% block content %}
+
+<div class="min-h-screen bg-slate-100 pt-24 pb-12">
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- HEADER -->
+        <div class="mb-8">
+
+            <a href="{% url 'students:list' %}"
+               class="inline-flex items-center gap-2
+                      text-slate-500 hover:text-indigo-600
+                      font-semibold transition">
+
+                ← Back to Students
+
+            </a>
+
+            <div class="mt-6">
+
+                <p class="text-sm font-bold uppercase
+                          tracking-widest text-indigo-600">
+
+                    Student Management
+
+                </p>
+
+                <h1 class="text-3xl md:text-4xl
+                           font-black text-slate-900 mt-2">
+
+                    Add New Student
+
+                </h1>
+
+                <p class="text-slate-500 mt-2">
+
+                    Register a new student in
+                    {{ school.school_name }}.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- SCHOOL CARD -->
+
+        <div class="bg-gradient-to-r from-indigo-700 to-sky-600
+                    rounded-3xl p-6 text-white shadow-xl mb-6">
+
+            <div class="flex items-center gap-4">
+
+                <div class="w-14 h-14 rounded-2xl
+                            bg-white/10 flex items-center
+                            justify-center text-2xl">
+
+                    🏫
+
+                </div>
+
+                <div>
+
+                    <p class="text-xs uppercase
+                              tracking-widest
+                              text-indigo-200 font-bold">
+
+                        Registering Student At
+
+                    </p>
+
+                    <h2 class="text-xl font-black">
+
+                        {{ school.school_name }}
+
+                    </h2>
+
+                    <p class="text-sm text-indigo-100">
+
+                        School Code:
+                        <span class="font-bold">
+                            {{ school.school_code }}
+                        </span>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form method="POST"
+              enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+
+            <!-- FORM ERRORS -->
+
+            {% if form.non_field_errors %}
+
+                <div class="mb-6 rounded-2xl
+                            border border-red-200
+                            bg-red-50 p-5">
+
+                    <h3 class="font-bold text-red-700">
+                        Please correct the following:
+                    </h3>
+
+                    <div class="mt-2 text-sm text-red-600">
+
+                        {{ form.non_field_errors }}
+
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+
+            <!-- STUDENT INFORMATION -->
+
+            <div class="bg-white rounded-2xl
+                        border border-slate-200
+                        shadow-sm p-6 md:p-8 mb-6">
+
+                <div class="flex items-center gap-4 mb-7">
+
+                    <div class="w-12 h-12 rounded-xl
+                                bg-indigo-100
+                                flex items-center justify-center
+                                text-xl">
+
+                        👨‍🎓
+
+                    </div>
+
+                    <div>
+
+                        <h2 class="text-xl font-black text-slate-900">
+
+                            Student Information
+
+                        </h2>
+
+                        <p class="text-sm text-slate-500">
+
+                            Basic information of the student.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+
+                    <!-- FIRST NAME -->
+
+                    <div>
+
+                        <label for="{{ form.first_name.id_for_label }}"
+                               class="form-label">
+
+                            First Name
+                            <span class="text-red-500">*</span>
+
+                        </label>
+
+                        {{ form.first_name }}
+
+                        {% if form.first_name.errors %}
+                            <p class="form-error">
+                                {{ form.first_name.errors.0 }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- LAST NAME -->
+
+                    <div>
+
+                        <label for="{{ form.last_name.id_for_label }}"
+                               class="form-label">
+
+                            Last Name
+
+                        </label>
+
+                        {{ form.last_name }}
+
+                        {% if form.last_name.errors %}
+                            <p class="form-error">
+                                {{ form.last_name.errors.0 }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- ROLL NUMBER -->
+
+                    <div>
+
+                        <label for="{{ form.roll_number.id_for_label }}"
+                               class="form-label">
+
+                            Roll Number
+
+                        </label>
+
+                        {{ form.roll_number }}
+
+                        {% if form.roll_number.errors %}
+                            <p class="form-error">
+                                {{ form.roll_number.errors.0 }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- DATE OF BIRTH -->
+
+                    <div>
+
+                        <label for="{{ form.date_of_birth.id_for_label }}"
+                               class="form-label">
+
+                            Date of Birth
+
+                        </label>
+
+                        {{ form.date_of_birth }}
+
+                        {% if form.date_of_birth.errors %}
+                            <p class="form-error">
+                                {{ form.date_of_birth.errors.0 }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- GENDER -->
+
+                    <div>
+
+                        <label for="{{ form.gender.id_for_label }}"
+                               class="form-label">
+
+                            Gender
+
+                        </label>
+
+                        {{ form.gender }}
+
+                        {% if form.gender.errors %}
+                            <p class="form-error">
+                                {{ form.gender.errors.0 }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- PHOTO -->
+
+                    <div>
+
+                        <label for="{{ form.photo.id_for_label }}"
+                               class="form-label">
+
+                            Student Photo
+
+                        </label>
+
+                        {{ form.photo }}
+
+                        {% if form.photo.errors %}
+                            <p class="form-error">
+                                {{ form.photo.errors.0 }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTACT INFORMATION -->
+
+            <div class="bg-white rounded-2xl
+                        border border-slate-200
+                        shadow-sm p-6 md:p-8 mb-6">
+
+                <div class="flex items-center gap-4 mb-7">
+
+                    <div class="w-12 h-12 rounded-xl
+                                bg-sky-100
+                                flex items-center justify-center
+                                text-xl">
+
+                        📞
+
+                    </div>
+
+                    <div>
+
+                        <h2 class="text-xl font-black text-slate-900">
+
+                            Contact Information
+
+                        </h2>
+
+                        <p class="text-sm text-slate-500">
+
+                            Student contact details.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+
+                    <!-- EMAIL -->
+
+                    <div>
+
+                        <label for="{{ form.email.id_for_label }}"
+                               class="form-label">
+
+                            Email
+
+                        </label>
+
+                        {{ form.email }}
+
+                        {% if form.email.errors %}
+                            <p class="form-error">
+                                {{ form.email.errors.0 }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div>
+
+                        <label for="{{ form.phone_number.id_for_label }}"
+                               class="form-label">
+
+                            Phone Number
+
+                        </label>
+
+                        {{ form.phone_number }}
+
+                        {% if form.phone_number.errors %}
+                            <p class="form-error">
+                                {{ form.phone_number.errors.0 }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PARENT INFORMATION -->
+
+            <div class="bg-white rounded-2xl
+                        border border-slate-200
+                        shadow-sm p-6 md:p-8 mb-6">
+
+                <div class="flex items-center gap-4 mb-7">
+
+                    <div class="w-12 h-12 rounded-xl
+                                bg-orange-100
+                                flex items-center justify-center
+                                text-xl">
+
+                        👨‍👩‍👦
+
+                    </div>
+
+                    <div>
+
+                        <h2 class="text-xl font-black text-slate-900">
+
+                            Parent / Guardian Information
+
+                        </h2>
+
+                        <p class="text-sm text-slate-500">
+
+                            Parent or guardian details.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+
+                    <!-- FATHER -->
+
+                    <div>
+
+                        <label for="{{ form.father_name.id_for_label }}"
+                               class="form-label">
+
+                            Father / Guardian Name
+
+                        </label>
+
+                        {{ form.father_name }}
+
+                        {% if form.father_name.errors %}
+                            <p class="form-error">
+                                {{ form.father_name.errors.0 }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- MOTHER -->
+
+                    <div>
+
+                        <label for="{{ form.mother_name.id_for_label }}"
+                               class="form-label">
+
+                            Mother Name
+
+                        </label>
+
+                        {{ form.mother_name }}
+
+                        {% if form.mother_name.errors %}
+                            <p class="form-error">
+                                {{ form.mother_name.errors.0 }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- PARENT PHONE -->
+
+                    <div>
+
+                        <label for="{{ form.parent_phone.id_for_label }}"
+                               class="form-label">
+
+                            Parent Phone Number
+
+                        </label>
+
+                        {{ form.parent_phone }}
+
+                        {% if form.parent_phone.errors %}
+                            <p class="form-error">
+                                {{ form.parent_phone.errors.0 }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ADDRESS -->
+
+            <div class="bg-white rounded-2xl
+                        border border-slate-200
+                        shadow-sm p-6 md:p-8 mb-6">
+
+                <div class="flex items-center gap-4 mb-7">
+
+                    <div class="w-12 h-12 rounded-xl
+                                bg-emerald-100
+                                flex items-center justify-center
+                                text-xl">
+
+                        📍
+
+                    </div>
+
+                    <div>
+
+                        <h2 class="text-xl font-black text-slate-900">
+
+                            Address
+
+                        </h2>
+
+                        <p class="text-sm text-slate-500">
+
+                            Student residential information.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="md:col-span-2">
+
+                        <label for="{{ form.address.id_for_label }}"
+                               class="form-label">
+
+                            Full Address
+
+                        </label>
+
+                        {{ form.address }}
+
+                        {% if form.address.errors %}
+                            <p class="form-error">
+                                {{ form.address.errors.0 }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- CITY -->
+
+                    <div>
+
+                        <label for="{{ form.city.id_for_label }}"
+                               class="form-label">
+
+                            City
+
+                        </label>
+
+                        {{ form.city }}
+
+                        {% if form.city.errors %}
+                            <p class="form-error">
+                                {{ form.city.errors.0 }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- STATE -->
+
+                    <div>
+
+                        <label for="{{ form.state.id_for_label }}"
+                               class="form-label">
+
+                            State
+
+                        </label>
+
+                        {{ form.state }}
+
+                        {% if form.state.errors %}
+                            <p class="form-error">
+                                {{ form.state.errors.0 }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="bg-white rounded-2xl
+                        border border-slate-200
+                        shadow-sm p-6 md:p-8 mb-6">
+
+                <div class="flex items-center gap-4">
+
+                    {{ form.is_active }}
+
+                    <div>
+
+                        <label for="{{ form.is_active.id_for_label }}"
+                               class="font-bold text-slate-900">
+
+                            Active Student
+
+                        </label>
+
+                        <p class="text-sm text-slate-500">
+
+                            Keep this enabled if the student is
+                            currently enrolled.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                {% if form.is_active.errors %}
+                    <p class="form-error">
+                        {{ form.is_active.errors.0 }}
+                    </p>
+                {% endif %}
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="flex flex-col-reverse sm:flex-row
+                        sm:justify-end gap-3">
+
+                <a href="{% url 'students:list' %}"
+                   class="px-6 py-3 rounded-xl
+                          bg-white
+                          border border-slate-200
+                          text-slate-700
+                          font-bold text-center
+                          hover:bg-slate-50 transition">
+
+                    Cancel
+
+                </a>
+
+                <button type="submit"
+                        class="px-7 py-3 rounded-xl
+                               bg-indigo-600
+                               text-white
+                               font-bold
+                               shadow-lg
+                               shadow-indigo-600/20
+                               hover:bg-indigo-700
+                               transition">
+
+                    Add Student
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- SMALL FORM STYLES -->
+
+<style>
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    color: rgb(51 65 85);
+}
+
+.form-error {
+    margin-top: 0.375rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: rgb(220 38 38);
+}
+
+</style>
+
+{% endblock %}
