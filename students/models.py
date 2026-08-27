@@ -161,14 +161,12 @@ class Student(models.Model):
 
         if not self.admission_number:
 
-            last_student = Student.objects.filter(
-                school=self.school
-            ).order_by("-id").first()
+            number = 1
 
-            if last_student:
-                number = last_student.id + 1
-            else:
-                number = 1
+            while Student.objects.filter(
+                admission_number=f"ADM-{number:05d}"
+            ).exists():
+                number += 1
 
             self.admission_number = f"ADM-{number:05d}"
 
